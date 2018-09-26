@@ -1,15 +1,11 @@
-#include <iostream>
-#include <string>
-#include <map>
-#include <cstdbool>
 #include "parse.h"
 
 using namespace std;
 
 // parsePipe returns a map of a parsed Pipe Delineated string
-// "id=1|name=orderer"
-map <string, int> parsePipe(string piped) {
-	map <string, int> order;
+// "id=1 | name=orderer"
+map<int, string> parsePipe(string piped) {
+	map<int, string> order;
 	string key;
 	string value;
 	unsigned ki = 0;

@@ -4,9 +4,9 @@
 
 #include <iostream>
 #include <string>
-#include "Order.h"
-#include "parse.h"
 #include <map>
+#include "parse.h"
+#include "order.h"
 
 using namespace std;
 
@@ -20,10 +20,12 @@ int main() {
 	cout << tester.getOrderer() << endl;
 	tester.setOrderer("Monkees");
 	cout << tester.getOrderer() << endl;
-	string test = "id = 1 | name = orderer";
-	map <string, int> order;
-	order = parsePipe(test);
-	cout << order.size();
+	string test = "1=1|2=orderer";
+	parsePipe(test);
+	map<int, string> test_order;
+	//test_order = parsePipe(test);
+	//test_order = parsePipe(test);
+	//cout << test_order.size();
 	/*if (isOrder(order)) {
 		
 	}
