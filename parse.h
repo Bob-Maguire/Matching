@@ -9,3 +9,4 @@ using std::string;
 using std::map;
 
 map<int, string> parsePipe(string piped);
+static int splitEntry(char **tag, char **value, string entry);

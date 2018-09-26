@@ -5,6 +5,7 @@
 #include <iostream>
 #include <string>
 #include <map>
+#include <cstdbool>
 #include "parse.h"
 #include "order.h"
 
@@ -12,17 +13,12 @@ using namespace std;
 
 int main() {
 	cout << "Well here we go!\n";
-	Order tester = Order(1, "bing");
-	cout << tester.getId();
-	tester.setId(5);
-	cout << tester.getId() << endl;
-
-	cout << tester.getOrderer() << endl;
-	tester.setOrderer("Monkees");
-	cout << tester.getOrderer() << endl;
-	string test = "1=1|2=orderer";
-	parsePipe(test);
-	map<int, string> test_order;
+	
+	string test = "1=1 | 2=orderer";
+	map<int, string> test_order = parsePipe(test);
+	if (test_order[-1].compare("empty") == 0) return -1;
+	
+	//cout << test_order.find(1);
 	//test_order = parsePipe(test);
 	//test_order = parsePipe(test);
 	//cout << test_order.size();

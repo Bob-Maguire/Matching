@@ -6,38 +6,40 @@ using namespace std;
 // "id=1 | name=orderer"
 map<int, string> parsePipe(string piped) {
 	map<int, string> order;
-	string key;
-	string value;
-	unsigned ki = 0;
-	unsigned vi = 0;
+	char *tag = NULL;
+	char *value = NULL;
+	if (piped.empty()) {
+		cerr << "Order empty";
+		order[-1] = "empty";
+	}
+	else {
+		order[-1] = "present";
+	}
+	string entry;
+	unsigned e = 0;
 	for (unsigned i = 0; i < piped.length(); i++) {
-		if (k == true) {
-			if (piped[i] == '=') {
-				k = false;
-				ki = 0;
-			}
-			else if (piped[i] == '|') {
-				cout << "beep";
-			}
-			else {
-				key[ki] = piped[i];
-				ki++;
-			}
+		if (piped[i] != '|') {
+			
+			cout << piped[i] << endl;
+			//e++;
 		}
-		else if (k == false) {
-			if (piped[i] == '|') {
-				k = true;
-				vi = 0;
-				order.insert(key, value);
-			}
-			else if (piped[i] == '=') {
-				cout << "beep 2";
-			}
-			else {
-				value[vi] = piped[i];
-				vi++;
-			}
+		else {
+			piped[i] = '\0';
+			splitEntry(&tag, &value, entry);
+
 		}
 	}
 	return order;
+}
+
+int splitEntry(char ** tag, char ** value, string entry)
+{
+	unsigned ei = 0;
+	*tag = &(entry[ei]);
+	while (entry[ei] != '=') {
+		ei++;
+	}
+	entry[ei] = '\0';
+
+	return 0;
 }
