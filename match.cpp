@@ -10,29 +10,17 @@
 
 using namespace std;
 
-int main() {
-	cout << "Well here we go!\n";
-	Order tester = Order(1, "bing");
-	cout << tester.getId();
-	tester.setId(5);
-	cout << tester.getId() << endl;
+int handleOrder(string test);
 
-	cout << tester.getOrderer() << endl;
-	tester.setOrderer("Monkees");
-	cout << tester.getOrderer() << endl;
-	string test = "1=1|2=orderer";
-	parsePipe(test);
-	map<int, string> test_order;
-	//test_order = parsePipe(test);
-	//test_order = parsePipe(test);
-	//cout << test_order.size();
-	/*if (isOrder(order)) {
-		
-	}
-	else {
-		return 1;
-	}
-	*/
+int main() {
+	handleOrder("1=1 | 2=orderer");
+	handleOrder("1=1");
+	return 0;
+}
+
+int handleOrder(string test) {
+	Order tester = Order();
+	tester.setOrder(test);
 	cin.get();
 	return 0;
 }

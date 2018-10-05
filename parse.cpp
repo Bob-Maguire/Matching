@@ -2,42 +2,42 @@
 
 using namespace std;
 
-// parsePipe returns a map of a parsed Pipe Delineated string
+string trim(string& str) {
+	size_t st = str.find_first_not_of(' ');
+	size_t en = str.find_last_not_of(' ');
+	return str.substr(st, en - st + 1);
+}
+
+// parsePipe returns a map of a parsed Pipe Delimited string
 // "id=1 | name=orderer"
 map<int, string> parsePipe(string piped) {
 	map<int, string> order;
-	string key;
-	string value;
-	unsigned ki = 0;
-	unsigned vi = 0;
-	for (unsigned i = 0; i < piped.length(); i++) {
-		if (k == true) {
-			if (piped[i] == '=') {
-				k = false;
-				ki = 0;
-			}
-			else if (piped[i] == '|') {
-				cout << "beep";
-			}
-			else {
-				key[ki] = piped[i];
-				ki++;
-			}
-		}
-		else if (k == false) {
-			if (piped[i] == '|') {
-				k = true;
-				vi = 0;
-				order.insert(key, value);
-			}
-			else if (piped[i] == '=') {
-				cout << "beep 2";
-			}
-			else {
-				value[vi] = piped[i];
-				vi++;
-			}
-		}
+	vector<string> vect;
+	stringstream ss(piped);
+	queue<string> entries;
+
+	int i;
+
+	while (ss.good()) {
+		string entry;
+		getline(ss, entry, '|');
+		vect.push_back(entry);
+	}
+	for (i = 0; i < vect.size(); i++) {
+		vect.at(i) = trim(vect.at(i));
+		entries.push(vect.at(i));
+	}
+	while (entries.empty() == false) {
+		vector<string> evect;
+		stringstream sse(entries.front());
+		string ids;
+		string det;
+		getline(sse, ids, '=');
+		vect.push_back(ids);
+		getline(sse, det, '=');
+		int id = stoi(ids);
+		order[id] = det;
+		entries.pop();
 	}
 	return order;
 }
