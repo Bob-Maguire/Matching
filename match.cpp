@@ -14,7 +14,6 @@ int handleOrder(string test);
 
 int main() {
 	handleOrder("1=1 | 2=orderer");
-	handleOrder("1=1");
 	return 0;
 }
 
