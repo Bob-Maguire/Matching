@@ -12,6 +12,7 @@ string trim(string& str) {
 // "id=1 | name=orderer"
 map<int, string> parsePipe(string piped) {
 	map<int, string> order;
+<<<<<<< HEAD
 	vector<string> vect;
 	stringstream ss(piped);
 	queue<string> entries;
@@ -38,6 +39,42 @@ map<int, string> parsePipe(string piped) {
 		int id = stoi(ids);
 		order[id] = det;
 		entries.pop();
+=======
+	char *tag = NULL;
+	char *value = NULL;
+	if (piped.empty()) {
+		cerr << "Order empty";
+		order[-1] = "empty";
+	}
+	else {
+		order[-1] = "present";
+	}
+	string entry;
+	unsigned e = 0;
+	for (unsigned i = 0; i < piped.length(); i++) {
+		if (piped[i] != '|') {
+			
+			cout << piped[i] << endl;
+			//e++;
+		}
+		else {
+			piped[i] = '\0';
+			splitEntry(&tag, &value, entry);
+
+		}
+>>>>>>> d6fec8c5b199a3683002e36288e18bada97a8206
 	}
 	return order;
+}
+
+int splitEntry(char ** tag, char ** value, string entry)
+{
+	unsigned ei = 0;
+	*tag = &(entry[ei]);
+	while (entry[ei] != '=') {
+		ei++;
+	}
+	entry[ei] = '\0';
+
+	return 0;
 }
