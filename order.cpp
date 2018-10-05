@@ -36,6 +36,3 @@ int Order::checkOrder(map<int, string> potential)
 	cout << "Order is proper" << endl;
 	return 0;
 }
-
-
-	

@@ -1,2 +1,5 @@
 ﻿  match.cpp
+  order.cpp
+  parse.cpp
+  Generating Code...
   MatchingEngine.vcxproj -> C:\Users\Bobby\source\repos\MatchingEngine\x64\Debug\MatchingEngine.exe
